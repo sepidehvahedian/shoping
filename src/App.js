@@ -1,4 +1,4 @@
-import logo from "./logo.svg";
+import  User  from "./User";
 import "./App.css";
 
 function App() {
@@ -11,19 +11,10 @@ function App() {
   return (
     <div className="App">
       {users.map((user, index) => {
-        return <Users name={user.name} age={user.age} />;
+        return <User key={index} name={user.name} age={user.age} />;
       })}
     </div>
   );
 }
-
-const Users = (props) => {
-  console.log(props);
-  return (
-    <h2>
-      {props.name} : {props.age}
-    </h2>
-  );
-};
 
 export default App;
