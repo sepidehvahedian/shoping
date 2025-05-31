@@ -1,17 +1,20 @@
-import  User  from "./User";
+import { Class } from "./Class";
 import "./App.css";
 
 function App() {
-  const users = [
-    { name: "sepideh", age: 23 },
-    { name: "mahta", age: 12 },
-    { name: "mohsen", age: 14 },
+  const classes = [
+    { name: "html", finished: true },
+    { name: "JavaScript", finished: false },
+    { name: "css", finished: true },
+    { name: "bootStap", finished: false },
+    { name: "react", finished: true },
+    { name: "python", finished: false },
   ];
 
   return (
     <div className="App">
-      {users.map((user, index) => {
-        return <User key={index} name={user.name} age={user.age} />;
+      {classes.map((c, index) => {
+        return c.finished && <Class key={index} name={c.name} />;
       })}
     </div>
   );
