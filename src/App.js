@@ -1,21 +1,16 @@
-import { Class } from "./Class";
+import { useState } from "react";
 import "./App.css";
 
 function App() {
-  const classes = [
-    { name: "html", finished: true },
-    { name: "JavaScript", finished: false },
-    { name: "css", finished: true },
-    { name: "bootStap", finished: false },
-    { name: "react", finished: true },
-    { name: "python", finished: false },
-  ];
+  const [age,setAge]=useState(0)
+  const increaseAge = () => {
+    setAge ( age + 1);
 
+  };
   return (
     <div className="App">
-      {classes.map((c, index) => {
-        return c.finished && <Class key={index} name={c.name} />;
-      })}
+      <h1>{age}</h1>
+      <button onClick={increaseAge}>Increse age</button>
     </div>
   );
 }
