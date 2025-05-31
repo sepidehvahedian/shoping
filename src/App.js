@@ -2,17 +2,16 @@ import { useState } from "react";
 import "./App.css";
 
 function App() {
-  const [textColor, setTextColor] = useState("red");
+  const [count, setCount] = useState(0);
 
   return (
     <div className="App">
-      <button
-        onClick={() => setTextColor(textColor === "red" ? "green" : "red")}
-      >
-        Change color
-      </button>
-      <h1 style={{ color: textColor }}>sepideh style coding</h1>
+      <button onClick={() => setCount(count + 1)}>Increse </button>
+      <button onClick={() => setCount(count - 1)}>decrese </button>
+      <button onClick={() => setCount(count - count)}>set to 0</button>
+      <h1>{count}</h1>
     </div>
   );
 }
+
 export default App;
