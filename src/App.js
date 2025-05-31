@@ -2,12 +2,16 @@ import { useState } from "react";
 import "./App.css";
 
 function App() {
-  const [showText, setShowText] = useState(false);
-  const toggleText = () => setShowText(!showText);
+  const [textColor, setTextColor] = useState("red");
+
   return (
     <div className="App">
-      <button onClick={toggleText}>show/hide</button>
-      {showText && <h1>sepideh style codeing</h1>}
+      <button
+        onClick={() => setTextColor(textColor === "red" ? "green" : "red")}
+      >
+        Change color
+      </button>
+      <h1 style={{ color: textColor }}>sepideh style coding</h1>
     </div>
   );
 }
