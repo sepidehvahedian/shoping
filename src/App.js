@@ -11,15 +11,19 @@ function App() {
   return (
     <div className="App">
       {users.map((user, index) => {
-        return (
-          <p key={index}>
-            {user.name}
-            {user.age}
-          </p>
-        );
+        return <Users name={user.name} age={user.age} />;
       })}
     </div>
   );
 }
+
+const Users = (props) => {
+  console.log(props);
+  return (
+    <h2>
+      {props.name} : {props.age}
+    </h2>
+  );
+};
 
 export default App;
