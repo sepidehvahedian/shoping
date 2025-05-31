@@ -2,12 +2,13 @@ import logo from "./logo.svg";
 import "./App.css";
 
 function App() {
-  const age = 20;
+  const names = ["sepideh", "mahta", "mohsen"];
 
   return (
-    <div className={age ? "App" : "App-header"}>
-      {age > 20 ? <h1>over</h1> : <h1>under</h1>}
-      {age == 20 && <h1>age is 20</h1>}
+    <div className="App">
+      {names.map((name) => {
+        return <p>{name}</p>;
+      })}
     </div>
   );
 }
