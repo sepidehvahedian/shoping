@@ -2,15 +2,12 @@ import { useState } from "react";
 import "./App.css";
 
 function App() {
-  const [inputValue, setInputValue] = useState();
-  const handelChange=(e)=>{
-    setInputValue(e.target.value)
-  }
-
+  const [showText, setShowText] = useState(false);
+  const toggleText = () => setShowText(!showText);
   return (
     <div className="App">
-      <input type="text" onChange={handelChange}></input>
-      <h1>{inputValue}</h1>
+      <button onClick={toggleText}>show/hide</button>
+      {showText && <h1>sepideh style codeing</h1>}
     </div>
   );
 }
