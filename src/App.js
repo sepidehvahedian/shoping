@@ -3,14 +3,12 @@ import "./App.css";
 import Axios from "axios";
 
 function App() {
-  const [name, setName] = useState("");
-  const [predicteResult, setPredictedResult] = useState({});
-
-  const fetchFact = () => {
-    Axios.get(`https://api.agify.io?name=${text}`)
+  const [excuse, setExcuse] = useState("");
+  const fetchFact = (name) => {
+    Axios.get(`https://excuser-three.vercel.app/v1/excuse/${name}/`)
       .then((response) => {
         console.log("پاسخ سرور:", response.data);
-        setPredictedResult(response.data);
+        setExcuse(response.data[0].excuse);
       })
       .catch((error) => {
         console.error("خطا:", error);
@@ -19,10 +17,11 @@ function App() {
 
   return (
     <div className="App">
-      <input type="text" onChange={(e) => setName(e.target.value)} />
-      <button onClick={fetchFact}>predicte age</button>
-      <h1>age is : {predicteResult.age}</h1>
-      <h1>age is : {predicteResult.name}</h1>
+      <h1>Generate an excuse</h1>
+      <button onClick={() => fetchFact("party")}>Party</button>
+      <button onClick={() => fetchFact("family")}>Family</button>
+      <button onClick={() => fetchFact("office")}>Office</button>
+      <p>{excuse}</p>
     </div>
   );
 }
