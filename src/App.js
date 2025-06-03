@@ -1,27 +1,28 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import Axios from "axios";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
+import Profile from "./pages/Profile";
+import { Nav } from "./pages/Nav";
 
 function App() {
-  const [excuse, setExcuse] = useState("");
-  const fetchFact = (name) => {
-    Axios.get(`https://excuser-three.vercel.app/v1/excuse/${name}/`)
-      .then((response) => {
-        console.log("پاسخ سرور:", response.data);
-        setExcuse(response.data[0].excuse);
-      })
-      .catch((error) => {
-        console.error("خطا:", error);
-      });
-  };
-
   return (
     <div className="App">
-      <h1>Generate an excuse</h1>
-      <button onClick={() => fetchFact("party")}>Party</button>
-      <button onClick={() => fetchFact("family")}>Family</button>
-      <button onClick={() => fetchFact("office")}>Office</button>
-      <p>{excuse}</p>
+      <Router>
+        <div>SepidehStyle</div>
+        <Nav />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/profile/:name/:id?" element={<Profile />} />
+          <Route path="*" element={<div>Not Found</div>} />
+        </Routes>
+        <div>This is footer</div>
+      </Router>
     </div>
   );
 }
