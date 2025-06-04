@@ -1,10 +1,13 @@
+import { useState } from "react";
+import { useToggle } from "./useToggle";
 import "./App.css";
-import SubmitForm from "./Components/SubmitForm";
 
 function App() {
+  const [isVisible, toogle] = useToggle(false);
   return (
     <div className="App">
-      <SubmitForm />
+      <button onClick={toogle}>{isVisible ? "Hide" : "Show"}</button>
+      {isVisible && <h1>This is my hidden text</h1>}
     </div>
   );
 }
