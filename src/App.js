@@ -9,15 +9,16 @@ import Profile from "./pages/Profile";
 import { Nav } from "./pages/Nav";
 
 function App() {
+  const [username,setUsername]=useState('sepidehStyle')
   return (
     <div className="App">
       <Router>
         <div>SepidehStyle</div>
         <Nav />
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Home username={username}/>} />
           <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
+          <Route path="/contact" element={<Contact username={username} setUsername={setUsername}/>} />
           <Route path="/profile/:name/:id?" element={<Profile />} />
           <Route path="*" element={<div>Not Found</div>} />
         </Routes>
