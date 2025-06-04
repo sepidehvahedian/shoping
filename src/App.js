@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext, createContext } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import Axios from "axios";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
@@ -7,12 +7,18 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Profile from "./pages/Profile";
 import { Nav } from "./pages/Nav";
-export const ContactContext = createContext();
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 function App() {
-  const [username, setUsername] = useState("sepidehStyle");
+  const queryClient = new QueryClient({
+    defaultOptions: {
+      queries: {
+        refetchOnWindowFocus: false,
+      },
+    },
+  });
   return (
-    <ContactContext value={{ username, setUsername }}>
+    <QueryClientProvider client={queryClient}>
       <div className="App">
         <Router>
           <div>SepidehStyle</div>
@@ -27,7 +33,7 @@ function App() {
           <div>This is footer</div>
         </Router>
       </div>
-    </ContactContext>
+    </QueryClientProvider>
   );
 }
 

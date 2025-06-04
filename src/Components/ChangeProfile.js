@@ -1,12 +1,11 @@
-import React, { useContext, useState } from "react";
-import { ContactContext } from "../App";
+import React, { useState } from "react";
 const ChangeProfile = () => {
   const [newUsername, setNewUsername] = useState("");
-  const { setUsername } = useContext(ContactContext);
+
   return (
     <React.Fragment>
       <input onChange={(e) => setNewUsername(e.target.value)} />
-      <button onClick={() => setUsername(newUsername)}>change username</button>
+      <button>change username</button>
     </React.Fragment>
   );
 };
