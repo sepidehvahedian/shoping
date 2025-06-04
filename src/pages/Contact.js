@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import ChangeProfile from "../Components/ChangeProfile";
-const Contact = (props) => {
+import { ContactContext } from "../App";
+
+const Contact = () => {
+  const{username}=useContext(ContactContext)
   return (
     <React.Fragment>
-      <p>This is Contact page - username is {props.username}</p>
-      <ChangeProfile setUsername={props.setUsername} />
+      <p>This is Contact page - username is {username}</p>
+      <ChangeProfile  />
     </React.Fragment>
   );
 };
